@@ -13,7 +13,7 @@ function Home() {
     setMessages(updatedMessages);
 
     try {
-      const res = await fetch("/api/claude", {
+      const res = await fetch("/api/openai", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: input }),
@@ -24,10 +24,11 @@ function Home() {
       // Add AI reply
       setMessages([
         ...updatedMessages,
-        { sender: "ai", text: data.reply || "No response from Claude." }
+        { sender: "ai", text: data.reply || "No response from AI." }
       ]);
 
     } catch (err) {
+      console.error(err);
       setMessages([
         ...updatedMessages,
         { sender: "ai", text: "Error connecting to AI. Check backend." }

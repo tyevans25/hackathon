@@ -9,17 +9,17 @@ import TalentUpload from './pages/TalentUpload';
 import TalentDirectory from './pages/TalentDirectory';
 
 function App() {
-  return (
-    <Router>
-      <Navbar />
+return (
+<Router>
+<Navbar />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/upload" element={<TalentUpload />} />
-        <Route path="/directory" element={<TalentDirectory />} />
-      </Routes>
-    </Router>
-  );
+<Routes>
+<Route path="/" element={<Home />} />
+<Route path="/upload" element={<TalentUpload />} />
+<Route path="/directory" element={<TalentDirectory />} />
+</Routes>
+</Router>
+);
 }
 
 export default App;
