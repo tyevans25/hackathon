@@ -12,18 +12,16 @@ export default async function handler(req, res) {
       apiKey: process.env.OPENAI_API_KEY,
     });
 
-    const completion = await client.chat.completions.create({
+    // NEW recommended OpenAI call
+    const response = await client.responses.create({
       model: "gpt-4o-mini",
-      messages: [
-        { role: "user", content: req.body.message }
-      ],
-      max_tokens: 200,
+      input: req.body.message,
+      max_output_tokens: 200,
     });
 
-    const reply =
-      completion.choices?.[0]?.message?.content || "No AI response.";
+    const reply = response.output_text || "No response.";
 
-    console.log("🚨 DEBUG — AI Response:", reply);
+    console.log("🚨 DEBUG — AI reply:", reply);
 
     return res.status(200).json({ reply });
 
